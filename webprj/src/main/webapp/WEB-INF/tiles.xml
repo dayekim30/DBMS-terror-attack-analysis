@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+   <definition name="index" template="/WEB-INF/view/inc/layout.jsp">
+    <put-attribute name="title" value="It is main page for Group 1" />
+    <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
+    <put-attribute name="body" value="/WEB-INF/view/index.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
+  </definition>
+  <definition name="detail" template="/WEB-INF/view/inc/layout.jsp">
+   <put-attribute name="title" value="here is for list" />
+    <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
+    <put-attribute name="body" value="/WEB-INF/view/detail.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
+  </definition>
+   <definition name="list" template="/WEB-INF/view/inc/layout.jsp">
+  <put-attribute name="title" value="here is for graph" />
+    <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
+    <put-attribute name="body" value="/WEB-INF/view/list.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
+  </definition>
+</tiles-definitions>
