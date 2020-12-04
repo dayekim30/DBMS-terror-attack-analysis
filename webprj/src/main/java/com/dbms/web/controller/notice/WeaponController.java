@@ -1,5 +1,6 @@
 package com.dbms.web.controller.notice;
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,11 +12,8 @@ import org.springframework.web.servlet.mvc.Controller;
 import com.dbms.web.controller.entity.Weapont;
 import com.dbms.web.controller.service.WeaponService;
 
-
-
-public class DetailController implements Controller{
-	
-	private WeaponService weaponService;
+public class WeaponController implements Controller {
+private WeaponService weaponService;
 	
 
 	public void setWeaponService(WeaponService weaponService) {
@@ -26,7 +24,8 @@ public class DetailController implements Controller{
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		ModelAndView mv = new ModelAndView("detail");
+		//which jsp file you want to send this data
+		ModelAndView mv = new ModelAndView("weapontrend");
 		
 		List<Weapont> wplist = weaponService.getList();
 		mv.addObject("wplist", wplist);

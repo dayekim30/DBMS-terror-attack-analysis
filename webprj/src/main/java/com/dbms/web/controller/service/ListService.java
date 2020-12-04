@@ -11,6 +11,7 @@ import java.util.List;
 import com.dbms.web.controller.entity.WeaponTrend;
 
 
+
 public class ListService {
 	private String url="jdbc:oracle:thin:@oracle.cise.ufl.edu:1521/orcl";
 	private String uid= "daye";
@@ -20,68 +21,62 @@ public class ListService {
 	
 	public List<WeaponTrend> getList()throws ClassNotFoundException, SQLException{
 	
-	
-		String sql = "SELECT wep_type, event_year, COUNT(*)num FROM AGASKIN.Weapon\r\n"
+		String sql ="WITH tamp AS\r\n"
+				+ "(SELECT wep_type, event_year, COUNT(*)num FROM AGASKIN.Weapon\r\n"
 				+ "NATURAL JOIN AGASKIN.Event\r\n"
 				+ "WHERE event_year >= 1985\r\n"
 				+ "AND event_year <= 2000\r\n"
 				+ "AND weapon_id <> -9\r\n"
-				+ "GROUP BY wep_type, event_year\r\n"
-				+ "HAVING wep_type = 'Explosives'\r\n"
-				+ "ORDER BY event_year ASC";
-//		
-//		String sql1 ="SELECT wep_type, event_year, COUNT(*) FROM AGASKIN.Weapon\r\n"
-//				+ "NATURAL JOIN AGASKIN.Event\r\n"
-//				+ "WHERE event_year >= 1985\r\n"
-//				+ "AND event_year <= 2000\r\n"
-//				+ "AND weapon_id <> -9\r\n"
-//				+ "GROUP BY wep_type, event_year\r\n"
-//				+ "HAVING wep_type = 'Explosives'";
+				+ "GROUP BY wep_type, event_year)\r\n"
+				+ "SELECT c9.*,NVL(v.num,0)Vehicle FROM\r\n"
+				+ "(SELECT c8.*,NVL(s.num,0)Sabotage_Equipment FROM\r\n"
+				+ "(SELECT c7.*,NVL(r.num,0)Radiological FROM\r\n"
+				+ "(SELECT c6.*,NVL(o.num,0)Other FROM\r\n"
+				+ "(SELECT c5.*,NVL(m.num,0)Melee FROM\r\n"
+				+ "(SELECT c4.*,NVL(i.num,0)Incendiary FROM\r\n"
+				+ "(SELECT c3.*,NVL(f1.num,0)Firearms FROM (SELECT c2.*, NVL(f.num,0)Fake_Weapons FROM (SELECT c1.*, NVL(e.num,0)Explosives FROM (SELECT c.event_year event_year, c.Chemical, NVL(b.num,0)Biological \r\n"
+				+ "FROM (SELECT x.event_year event_year,NVL(y.num,0) Chemical FROM (SELECT DISTINCT event_year FROM tamp)x LEFT OUTER JOIN (SELECT * FROM tamp WHERE wep_type='Chemical')y\r\n"
+				+ "ON x.event_year = y.event_year)c LEFT OUTER JOIN (SELECT * FROM tamp WHERE wep_type='Biological')b ON c.event_year = b.event_year) c1 \r\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE wep_type='Explosives')e ON c1.event_year = e.event_year)c2\r\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE wep_type='Fake Weapons')f ON c2.event_year = f.event_year)c3 \r\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE wep_type='Firearms')f1 ON c3.event_year = f1.event_year)c4\r\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE wep_type='Incendiary')i ON c4.event_year = i.event_year)c5\r\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE wep_type='Melee')m ON c5.event_year = m.event_year)c6\r\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE wep_type='Other')o ON c6.event_year = o.event_year)c7\r\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE wep_type='Radiological')r ON c7.event_year = r.event_year)c8\r\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE wep_type='Sabotage Equipment')s ON c8.event_year = s.event_year)c9\r\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE wep_type='Vehicle (not explosive)')v ON c9.event_year = v.event_year\r\n"
+				+ "ORDER BY c9.event_year ASC";
 		
 		Class.forName(driver);
 		Connection con = DriverManager.getConnection(url,uid,pwd);
 		Statement st = con.createStatement();
-//		ResultSet rs = st.executeQuery(sql);
-//		
-//		ArrayList<Notice> list = new ArrayList<Notice>();
-//		
-//		while(rs.next()) {
-//		String country_code = rs.getString("country_code");
-//		String country_name = rs.getString("country_name");
-//		String region_code = rs.getString("region_code");
-//		String region_name = rs.getString("region_name");
-//				
-//		Notice notice = new Notice(country_code, country_name,region_code,region_name);
-//		list.add(notice);
-//		}
-		
-		
 		ResultSet rs = st.executeQuery(sql);
-//		ResultSet ws = st.executeQuery(sql1);
-//		
-		List<WeaponTrend> list1 = new ArrayList<WeaponTrend>();
-//		List<WeaponTrend> list2 = new ArrayList<WeaponTrend>();
 		
+		List<WeaponTrend> wtlist = new ArrayList<WeaponTrend>();
 		while(rs.next()) {
-		String wep_type = rs.getString("wep_type");
-		String event_year = rs.getString("event_year");
-		int num = rs.getInt("num");
-		
-		WeaponTrend weapontrend = new WeaponTrend(wep_type,event_year,num);
-		
-		list1.add(weapontrend);
-		}
-		
-		
-		
-		
-		
-		
-		
+			 String event_year = rs.getString("event_year");
+			 int Biological= rs.getInt("Biological");
+			 int Chemical= rs.getInt("Chemical");
+			 int Explosives= rs.getInt("Explosives");
+			 int Fake_Weapons= rs.getInt("Fake_Weapons");
+			 int Firearms= rs.getInt("Firearms");
+			 int Incendiary= rs.getInt("Incendiary");
+			 int Meleev= rs.getInt("Melee");
+			 int Other= rs.getInt("Other");
+			 int Radiological= rs.getInt("Radiological");
+			 int Sabotage_Equipment= rs.getInt("Sabotage_Equipment");
+			 int Vehicle= rs.getInt("Vehicle");
+
+			
+			 WeaponTrend weaponTrend = new WeaponTrend(event_year,Biological,Chemical,Explosives,Fake_Weapons,Firearms,Incendiary,Meleev,Other,Radiological,Sabotage_Equipment,Vehicle);
+			
+			wtlist.add(weaponTrend);
+			}
 		rs.close();
 		st.close();
 		con.close();
-		return list1;
-		}
+		return wtlist;
+	}
 		
 }

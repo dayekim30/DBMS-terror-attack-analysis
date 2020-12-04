@@ -8,12 +8,34 @@
         https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <bean id="/index" class="com.dbms.web.controller.IndexController" />  
+    
     <bean id="/list" class="com.dbms.web.controller.notice.ListController" >
     	<property name="listService" ref="listService" />
     </bean>  
-    <bean id="/detail" class="com.dbms.web.controller.notice.DetailController" >
+    
+    <bean id="/weapontrend" class="com.dbms.web.controller.notice.WeaponController" >
    		<property name="weaponService" ref="weaponService" />
     </bean>  
+    
+    <bean id="/targettrend" class="com.dbms.web.controller.notice.TargetTrendController" >
+   		<property name="targetTrendService" ref="targetTrendService" />
+    </bean>  
+    
+     <bean id="/weapondamagelocationtrend" class="com.dbms.web.controller.notice.WeapondamageLocationContoller" >
+   		<property name="weapondamageLocationTrendService" ref="weapondamageLocationTrendService" />
+    </bean>  
+    
+     <bean id="/terroristtrend" class="com.dbms.web.controller.notice.TerroristTrendController" >
+   		<property name="terroristTrendService" ref="terroristTrendService" />
+    </bean>
+    
+     <bean id="/regiontrend" class="com.dbms.web.controller.notice.RegionTrendContoller" >
+   		<property name="regionTrendService" ref="regionTrendService" />
+    </bean>
+    
+    <bean id="/successrate" class="com.dbms.web.controller.notice.SuccessRateController" >
+   		<property name="successRateService" ref="successRateService" />
+    </bean>
     
      <!-- tiles mapping  -->
     <bean
@@ -40,5 +62,11 @@
       
       <!-- service elements  -->
      <bean id ="listService" class="com.dbms.web.controller.service.ListService" />
-      <bean id ="weaponService" class="com.dbms.web.controller.service.WeaponService" />
+     <bean id ="weaponService" class="com.dbms.web.controller.service.WeaponService" />
+     <bean id ="targetTrendService" class="com.dbms.web.controller.service.TargetTrendService" />
+	 <bean id ="weapondamageLocationTrendService" class="com.dbms.web.controller.service.WeapondamageLocationTrendService" />
+	 <bean id ="terroristTrendService" class="com.dbms.web.controller.service.TerroristTrendService" />
+	 <bean id ="regionTrendService" class="com.dbms.web.controller.service.RegionTrendService" />
+	  <bean id ="successRateService" class="com.dbms.web.controller.service.SuccessRateService" />
+	 
 </beans>

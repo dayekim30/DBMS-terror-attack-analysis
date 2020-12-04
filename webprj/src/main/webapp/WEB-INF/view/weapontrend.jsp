@@ -7,10 +7,10 @@
 				<!-- One -->
 					<section id="one">
 						<header class="major">
-							<h2>GROUP1 - Terror attack analysis<br />
-							there is critical information.</h2>
+							<h2>Trends of Weapon type<br />
+<!-- 							there is critical information.</h2> -->
 						</header>
-						<p>HEELO</p>
+						<p>QUERY 2. Weapon, Event: Is there a trend between the most common weapons used over the years?</p>
 						<ul class="actions">
 							<li><a href="#" class="button">Learn More</a></li>
 						</ul>

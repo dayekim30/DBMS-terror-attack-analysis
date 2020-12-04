@@ -27,29 +27,34 @@ Through the analysis of fatality, location, time information of past terror atta
 								<p>list explanation in detail</p>
 							</article>
 							<article class="6u$ 12u$(xsmall) work-item">
-								<a href="/detail" ><img src="images/thumbs/02.jpg" alt="" /></a>
+								<a href="/weapontrend" ><img src="images/thumbs/02.jpg" alt="" /></a>
 								<h3>detail showing</h3>
 								<p>graph is showing</p>
 							</article>
 							<article class="6u 12u$(xsmall) work-item">
-								<a href="images/fulls/03.jpg" class="image fit thumb"><img src="images/thumbs/03.jpg" alt="" /></a>
-								<h3>Tortor metus commodo</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+								<a href="/targettrend"><img src="images/thumbs/03.jpg" alt="" /></a>
+								<h3>Query4</h3>
+								<p>Target Trend will show here.</p>
 							</article>
 							<article class="6u$ 12u$(xsmall) work-item">
-								<a href="images/fulls/04.jpg" class="image fit thumb"><img src="images/thumbs/04.jpg" alt="" /></a>
-								<h3>Quam neque phasellus</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+								<a href="/weapondamagelocationtrend" ><img src="images/thumbs/04.jpg" alt="" /></a>
+								<h3>Query6</h3>
+								<p>Weapon, Location, Damage(FATALITY + WOUNDED): Is there a trend b/t type.</p>
 							</article>
 							<article class="6u 12u$(xsmall) work-item">
-								<a href="images/fulls/05.jpg" class="image fit thumb"><img src="images/thumbs/05.jpg" alt="" /></a>
-								<h3>Nunc enim commodo aliquet</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+								<a href="/terroristtrend" ><img src="images/thumbs/05.jpg" alt="" /></a>
+								<h3>Query8</h3>
+								<p>top 10 most active terrorist groups.</p>
 							</article>
 							<article class="6u$ 12u$(xsmall) work-item">
-								<a href="images/fulls/06.jpg" class="image fit thumb"><img src="images/thumbs/06.jpg" alt="" /></a>
-								<h3>Risus ornare lacinia</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+								<a href="/regiontrend"><img src="images/thumbs/06.jpg" alt="" /></a>
+								<h3>Query9</h3>
+								<p>there a trend the wep_type/targ_type/attack_type in a specific region?.</p>
+							</article>
+							<article class="6u$ 12u$(xsmall) work-item">
+								<a href="/successrate" ><img src="images/thumbs/06.jpg" alt="" /></a>
+								<h3>Query10</h3>
+								<p>Is there a trend b/t a group's success rate and the year?.</p>
 							</article>
 						</div>
 						<ul class="actions">
