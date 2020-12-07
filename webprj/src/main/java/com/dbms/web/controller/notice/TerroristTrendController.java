@@ -31,7 +31,7 @@ public class TerroristTrendController implements Controller  {
 			List<TerroristTrend> TerroristTrend = terroristTrendService.getList();
 			
 			// "~~" this name will be used in JSP filt to get the list
-			mv.addObject("anything", TerroristTrend);
+			mv.addObject("TerroristTrendList", TerroristTrend);
 			return mv;
 		}
 }

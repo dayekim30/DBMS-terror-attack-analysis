@@ -33,7 +33,7 @@ public class SuccessRateController implements Controller {
 		List<SuccessRate> SuccessRate = successRateService.getList();
 		
 		// "~~" this name will be used in JSP filt to get the list
-		mv.addObject("anything", SuccessRate);
+		mv.addObject("SuccessRateList", SuccessRate);
 		return mv;
 	}
 }

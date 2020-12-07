@@ -9,16 +9,46 @@
     <put-attribute name="body" value="/WEB-INF/view/index.jsp" />
     <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
   </definition>
+     <definition name="list" template="/WEB-INF/view/inc/layout.jsp">
+  <put-attribute name="title" value="here is for graph" />
+    <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
+    <put-attribute name="body" value="/WEB-INF/view/list.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
+  </definition>
   <definition name="weapontrend" template="/WEB-INF/view/inc/layout.jsp">
    <put-attribute name="title" value="here is for list" />
     <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
     <put-attribute name="body" value="/WEB-INF/view/weapontrend.jsp" />
     <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
   </definition>
-   <definition name="list" template="/WEB-INF/view/inc/layout.jsp">
+   <definition name="targettrend" template="/WEB-INF/view/inc/layout.jsp">
+   <put-attribute name="title" value="here is for list" />
+    <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
+    <put-attribute name="body" value="/WEB-INF/view/targettrend.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
+  </definition>
+   <definition name="weapondamagelocationtrend" template="/WEB-INF/view/inc/layout.jsp">
+   <put-attribute name="title" value="here is for list" />
+    <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
+    <put-attribute name="body" value="/WEB-INF/view/weapondamagelocationtrend.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
+  </definition>
+   <definition name="terroristtrend" template="/WEB-INF/view/inc/layout.jsp">
+   <put-attribute name="title" value="here is for list" />
+    <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
+    <put-attribute name="body" value="/WEB-INF/view/terroristtrend.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
+  </definition>
+   <definition name="regiontrend" template="/WEB-INF/view/inc/layout.jsp">
   <put-attribute name="title" value="here is for graph" />
     <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
-    <put-attribute name="body" value="/WEB-INF/view/list.jsp" />
+    <put-attribute name="body" value="/WEB-INF/view/regiontrend.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
+  </definition>
+   <definition name="successrate" template="/WEB-INF/view/inc/layout.jsp">
+   <put-attribute name="title" value="here is for list" />
+    <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
+    <put-attribute name="body" value="/WEB-INF/view/successrate.jsp" />
     <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
   </definition>
 </tiles-definitions>

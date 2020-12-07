@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
-import com.dbms.web.controller.entity.Weapont;
+import com.dbms.web.controller.entity.WeaponTrend;
 import com.dbms.web.controller.service.WeaponService;
 
 public class WeaponController implements Controller {
@@ -27,7 +27,7 @@ private WeaponService weaponService;
 		//which jsp file you want to send this data
 		ModelAndView mv = new ModelAndView("weapontrend");
 		
-		List<Weapont> wplist = weaponService.getList();
+		List<WeaponTrend> wplist = weaponService.getList();
 		mv.addObject("wplist", wplist);
 		return mv;
 	}

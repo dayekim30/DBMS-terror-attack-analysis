@@ -18,7 +18,47 @@ public class TerroristTrendService {
 	public List<TerroristTrend> getList()throws ClassNotFoundException, SQLException{
 		
 		// for put sql 
-		String sql ="";
+		String sql ="WITH tamp AS\n"
+				+ "(\n"
+				+ "    SELECT gang_name, attack_type, event_year, COUNT(Event_id) AS num FROM AGASKIN.Event\n"
+				+ "    NATURAL JOIN AGASKIN.Attack\n"
+				+ "    WHERE gang_name = ANY(\n"
+				+ "        SELECT gang_name FROM (\n"
+				+ "            SELECT gang_name, count(event_id) as attack_count  FROM AGASKIN.ATTACK\n"
+				+ "            NATURAL JOIN AGASKIN.Event\n"
+				+ "            WHERE gang_name <> 'Unknown' \n"
+				+ "            AND event_year BETWEEN 1990 AND 2000    -- input\n"
+				+ "            GROUP BY gang_name      -- this is the list the user chooses from ***Note: it will be updated every time the time period changes\n"
+				+ "            ORDER BY COUNT(event_id) DESC\n"
+				+ "            )\n"
+				+ "        WHERE ROWNUM <= 10\n"
+				+ "        )\n"
+				+ "    AND Event_year BETWEEN 1990 AND 2000    -- input\n"
+				+ "    AND gang_name = 'Irish Republican Army (IRA)'         -- input\n"
+				+ "    GROUP BY gang_name, attack_type, event_year\n"
+				+ "    ORDER BY gang_name, attack_type, event_year\n"
+				+ ")\n"
+				+ "SELECT a.event_year, NVL(b.num,0)UnarmedAssault, NVL(c.num,0)Hijacking, NVL(d.num,0)HostageTaking,\n"
+				+ "    NVL(e.num,0)Bombing, NVL(f.num,0)Kidnapping, NVL(g.num,0)Facility,\n"
+				+ "    NVL(h.num,0)Assassination, NVL(i.num,0)ArmedAssault\n"
+				+ "FROM (SELECT DISTINCT event_year FROM tamp)a\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE attack_type='Unarmed Assault')b\n"
+				+ "ON a.event_year = b.event_year\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE attack_type='Hijacking')c\n"
+				+ "ON a.event_year = c.event_year\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE attack_type='Hostage Taking (Barricade Incident)')d\n"
+				+ "ON a.event_year = d.event_year\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE attack_type='Bombing/Explosion')e\n"
+				+ "ON a.event_year = e.event_year\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE attack_type='Hostage Taking (Kidnapping)')f\n"
+				+ "ON a.event_year = f.event_year\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE attack_type='Facility/Infrastructure Attack')g\n"
+				+ "ON a.event_year = g.event_year\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE attack_type='Assassination')h\n"
+				+ "ON a.event_year = h.event_year\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE attack_type='Armed Assault')i\n"
+				+ "ON a.event_year = i.event_year\n"
+				+ "ORDER BY a.event_year ASC";
 		
 		//for connction with driver
 		Class.forName(driver);
@@ -39,22 +79,19 @@ public class TerroristTrendService {
 		//From the above container, put the result into the list and each variable should be same with 
 		//the entity (com.dbms.web.controller.entity.~~)
 		while(rs.next()) {
-			
-//			 String event_year = rs.getString("event_year");
-//			 int Biological= rs.getInt("Biological");
-//			 int Chemical= rs.getInt("Chemical");
-//			 int Explosives= rs.getInt("Explosives");
-//			 int Fake_Weapons= rs.getInt("Fake_Weapons");
-//			 int Firearms= rs.getInt("Firearms");
-//			 int Incendiary= rs.getInt("Incendiary");
-//			 int Meleev= rs.getInt("Melee");
-//			 int Other= rs.getInt("Other");
-//			 int Radiological= rs.getInt("Radiological");
-//			 int Sabotage_Equipment= rs.getInt("Sabotage_Equipment");
-//			 int Vehicle= rs.getInt("Vehicle");
+		
+			String event_year = rs.getString("event_year");
+			 int UnarmedAssault = rs.getInt("UnarmedAssault");
+			 int ArmedAssault = rs.getInt("ArmedAssault");
+			 int Hijacking = rs.getInt("Hijacking");
+			 int HostageTaking = rs.getInt("HostageTaking");
+			 int Bombing = rs.getInt("Bombing");
+			 int Facility = rs.getInt("Facility");
+			 int Assassination = rs.getInt("Assassination");
+			 int Kidnapping = rs.getInt("Kidnapping");
 
 			
-			TerroristTrend resulttlist = new TerroristTrend();
+			TerroristTrend resulttlist = new TerroristTrend(event_year, UnarmedAssault, ArmedAssault, Hijacking, HostageTaking, Bombing, Facility, Assassination, Kidnapping);
 			
 			TerroristTrendlist.add(resulttlist);
 			}

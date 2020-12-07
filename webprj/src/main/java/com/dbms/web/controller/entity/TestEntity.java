@@ -1,17 +1,16 @@
 package com.dbms.web.controller.entity;
 
-public class RegionTrend {
-//here is the example :  the name of all columns and datatype should be defined here 
-		
+public class TestEntity {
+	  
 	  private String country_code;
 	  private String country_name;
 	  private int property_damage;
 	  private int fatality;
 	  private int frequency;
 	  
-	  public RegionTrend() {}
+	  public TestEntity(){}
 
-	public RegionTrend(String country_code, String country_name, int property_damage, int fatality, int frequency) {
+	public TestEntity(String country_code, String country_name, int property_damage, int fatality, int frequency) {
 		super();
 		this.country_code = country_code;
 		this.country_name = country_name;
@@ -58,11 +57,6 @@ public class RegionTrend {
 
 	public void setFrequency(int frequency) {
 		this.frequency = frequency;
-	}
-
-	
-
-
-	
-	
+	};
+	  
 }

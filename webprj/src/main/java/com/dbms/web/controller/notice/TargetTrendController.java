@@ -1,5 +1,5 @@
 package com.dbms.web.controller.notice;
-
+//QUERY 4
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,9 +31,11 @@ public class TargetTrendController implements Controller {
 		ModelAndView mv = new ModelAndView("targettrend");
 		
 		List<TargetTrend> TargetTrend = targetTrendService.getList();
+		List<String> targetlist = targetTrendService.getListTarget();
 		
 		// "~~" this name will be used in JSP filt to get the list
-		mv.addObject("anything", TargetTrend);
+		mv.addObject("TargetTrendList", TargetTrend);
+		mv.addObject("TargetList", targetlist);
 		return mv;
 	}
 }

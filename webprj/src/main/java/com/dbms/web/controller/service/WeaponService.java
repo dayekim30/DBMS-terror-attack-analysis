@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.dbms.web.controller.entity.Weapont;
+import com.dbms.web.controller.entity.WeaponTrend;
 
 public class WeaponService {
 	private String url="jdbc:oracle:thin:@oracle.cise.ufl.edu:1521/orcl";
@@ -16,7 +16,7 @@ public class WeaponService {
 	private String pwd="qwert1234";
 	private String driver = "oracle.jdbc.driver.OracleDriver";
 
-	public List<Weapont> getList()throws ClassNotFoundException, SQLException{
+	public List<WeaponTrend> getList()throws ClassNotFoundException, SQLException{
 		String sql ="WITH tamp AS\r\n"
 				+ "(SELECT wep_type, event_year, COUNT(*)num FROM AGASKIN.Weapon\r\n"
 				+ "NATURAL JOIN AGASKIN.Event\r\n"
@@ -49,7 +49,7 @@ public class WeaponService {
 		Statement st = con.createStatement();
 		ResultSet rs = st.executeQuery(sql);
 		
-		List<Weapont> wtlist = new ArrayList<Weapont>();
+		List<WeaponTrend> wtlist = new ArrayList<WeaponTrend>();
 		while(rs.next()) {
 			 String event_year = rs.getString("event_year");
 			 int Biological= rs.getInt("Biological");
@@ -65,7 +65,7 @@ public class WeaponService {
 			 int Vehicle= rs.getInt("Vehicle");
 
 			
-			Weapont weapont = new Weapont(event_year,Biological,Chemical,Explosives,Fake_Weapons,Firearms,Incendiary,Meleev,Other,Radiological,Sabotage_Equipment,Vehicle);
+			 WeaponTrend weapont = new WeaponTrend(event_year,Biological,Chemical,Explosives,Fake_Weapons,Firearms,Incendiary,Meleev,Other,Radiological,Sabotage_Equipment,Vehicle);
 			
 			wtlist.add(weapont);
 			}

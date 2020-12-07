@@ -28,8 +28,8 @@ Through the analysis of fatality, location, time information of past terror atta
 							</article>
 							<article class="6u$ 12u$(xsmall) work-item">
 								<a href="/weapontrend" ><img src="images/thumbs/02.jpg" alt="" /></a>
-								<h3>detail showing</h3>
-								<p>graph is showing</p>
+								<h3>Weapon Trend</h3>
+								<p>The trend of Weapon types over 40 years </p>
 							</article>
 							<article class="6u 12u$(xsmall) work-item">
 								<a href="/targettrend"><img src="images/thumbs/03.jpg" alt="" /></a>
@@ -43,17 +43,17 @@ Through the analysis of fatality, location, time information of past terror atta
 							</article>
 							<article class="6u 12u$(xsmall) work-item">
 								<a href="/terroristtrend" ><img src="images/thumbs/05.jpg" alt="" /></a>
-								<h3>Query8</h3>
+								<h3>Analysis of Terrorist</h3>
 								<p>top 10 most active terrorist groups.</p>
 							</article>
 							<article class="6u$ 12u$(xsmall) work-item">
 								<a href="/regiontrend"><img src="images/thumbs/06.jpg" alt="" /></a>
-								<h3>Query9</h3>
-								<p>there a trend the wep_type/targ_type/attack_type in a specific region?.</p>
+								<h3>Regional Analysis on Terror Attacks</h3>
+								<p>The victims and damages of terror attacks in each country.</p>
 							</article>
 							<article class="6u$ 12u$(xsmall) work-item">
 								<a href="/successrate" ><img src="images/thumbs/06.jpg" alt="" /></a>
-								<h3>Query10</h3>
+								<h3>Trends of Success Rate</h3>
 								<p>Is there a trend b/t a group's success rate and the year?.</p>
 							</article>
 						</div>

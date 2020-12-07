@@ -16,8 +16,20 @@ public class RegionTrendService {
 	
 	public List<RegionTrend> getList()throws ClassNotFoundException, SQLException{
 		
+		
 		// for put sql 
-		String sql ="";
+		String sql ="WITH tamp AS\r\n"
+				+ "(SELECT country_code country_code, country_name country_name, d.property_val property_damage,\r\n"
+				+ "(d.killed+d.wounded)fatality, e.event_year event_year\r\n"
+				+ "FROM (SELECT event_id,event_year, country_code FROM AGASKIN.EVENT)e NATURAL JOIN AGASKIN.LOCATION \r\n"
+				+ "NATURAL JOIN AGASKIN.DAMAGE d\r\n"
+				+ "ORDER BY e.event_year ASC)\r\n"
+				+ "SELECT country_code, country_name, property_damage, fatality, frequency FROM\r\n"
+				+ "(SELECT country_code, country_name, SUM(property_damage) property_damage,SUM(fatality)fatality, count(*) frequency, \r\n"
+				+ " RANK() OVER(ORDER BY count(*) DESC) rank\r\n"
+				+ "FROM tamp WHERE (event_year BETWEEN 2000 and 2017) \r\n"
+				+ "GROUP BY country_code, country_name HAVING SUM(property_damage)>0 AND SUM(fatality) >0)\r\n"
+				+ "WHERE rank <20";
 		
 		//for connction with driver
 		Class.forName(driver);
@@ -39,21 +51,13 @@ public class RegionTrendService {
 		//the entity (com.dbms.web.controller.entity.~~)
 		while(rs.next()) {
 			
-//			 String event_year = rs.getString("event_year");
-//			 int Biological= rs.getInt("Biological");
-//			 int Chemical= rs.getInt("Chemical");
-//			 int Explosives= rs.getInt("Explosives");
-//			 int Fake_Weapons= rs.getInt("Fake_Weapons");
-//			 int Firearms= rs.getInt("Firearms");
-//			 int Incendiary= rs.getInt("Incendiary");
-//			 int Meleev= rs.getInt("Melee");
-//			 int Other= rs.getInt("Other");
-//			 int Radiological= rs.getInt("Radiological");
-//			 int Sabotage_Equipment= rs.getInt("Sabotage_Equipment");
-//			 int Vehicle= rs.getInt("Vehicle");
-
+			String country_code = rs.getString("country_code");
+			String country_name = rs.getString("country_name");
+			int property_damage = rs.getInt("property_damage");
+			int fatality = rs.getInt("fatality");
+			int frequency = rs.getInt("frequency");
 			
-			RegionTrend resulttlist = new RegionTrend();
+			RegionTrend resulttlist = new RegionTrend(country_code,country_name,property_damage,fatality,frequency);
 			
 			RegionTrendlist.add(resulttlist);
 			}

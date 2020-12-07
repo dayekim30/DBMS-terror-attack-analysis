@@ -18,7 +18,40 @@ public class TargetTrendService {
 	public List<TargetTrend> getList()throws ClassNotFoundException, SQLException{
 		
 		// for put sql 
-		String sql ="";
+		String sql ="WITH tamp AS\n"
+				+ "(\n"
+				+ "    SELECT targ_type, attack_type, event_year, COUNT(event_id) AS num FROM AGASKIN.Event\n"
+				+ "    NATURAL JOIN (\n"
+				+ "        SELECT target_id, targ_type FROM AGASKIN.Target\n"
+				+ "        WHERE targ_type <> 'Unknown')\n"
+				+ "    NATURAL JOIN (\n"
+				+ "        SELECT attack_type, event_id FROM AGASKIN.Attack\n"
+				+ "        WHERE attack_type <> 'Unknown')\n"
+				+ "    WHERE event_year BETWEEN 1985 AND 2003   -- input\n"
+				+ "    AND targ_type = 'Abortion Related'       -- input\n"
+				+ "    GROUP BY targ_type, attack_type, event_year\n"
+				+ ")\n"
+				+ "SELECT a.event_year, NVL(b.num,0)UnarmedAssault, NVL(c.num,0)Hijacking, NVL(d.num,0)HostageTaking,\n"
+				+ "    NVL(e.num,0)Bombing, NVL(f.num,0)Kidnapping, NVL(g.num,0)Facility,\n"
+				+ "    NVL(h.num,0)Assassination, NVL(i.num,0)ArmedAssault\n"
+				+ "FROM (SELECT DISTINCT event_year FROM tamp)a\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE attack_type='Unarmed Assault')b\n"
+				+ "ON a.event_year = b.event_year\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE attack_type='Hijacking')c\n"
+				+ "ON a.event_year = c.event_year\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE attack_type='Hostage Taking (Barricade Incident)')d\n"
+				+ "ON a.event_year = d.event_year\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE attack_type='Bombing/Explosion')e\n"
+				+ "ON a.event_year = e.event_year\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE attack_type='Hostage Taking (Kidnapping)')f\n"
+				+ "ON a.event_year = f.event_year\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE attack_type='Facility/Infrastructure Attack')g\n"
+				+ "ON a.event_year = g.event_year\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE attack_type='Assassination')h\n"
+				+ "ON a.event_year = h.event_year\n"
+				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE attack_type='Armed Assault')i\n"
+				+ "ON a.event_year = i.event_year\n"
+				+ "ORDER BY a.event_year ASC";
 		
 		//for connction with driver
 		Class.forName(driver);
@@ -40,21 +73,17 @@ public class TargetTrendService {
 		//the entity (com.dbms.web.controller.entity.~~)
 		while(rs.next()) {
 			
-//			 String event_year = rs.getString("event_year");
-//			 int Biological= rs.getInt("Biological");
-//			 int Chemical= rs.getInt("Chemical");
-//			 int Explosives= rs.getInt("Explosives");
-//			 int Fake_Weapons= rs.getInt("Fake_Weapons");
-//			 int Firearms= rs.getInt("Firearms");
-//			 int Incendiary= rs.getInt("Incendiary");
-//			 int Meleev= rs.getInt("Melee");
-//			 int Other= rs.getInt("Other");
-//			 int Radiological= rs.getInt("Radiological");
-//			 int Sabotage_Equipment= rs.getInt("Sabotage_Equipment");
-//			 int Vehicle= rs.getInt("Vehicle");
-
-			
-			TargetTrend resulttlist = new TargetTrend();
+			 String event_year = rs.getString("event_year");
+			 int UnarmedAssault = rs.getInt("UnarmedAssault");
+			 int ArmedAssault = rs.getInt("ArmedAssault");
+			 int Hijacking = rs.getInt("Hijacking");
+			 int HostageTaking = rs.getInt("HostageTaking");
+			 int Bombing = rs.getInt("Bombing");
+			 int Facility = rs.getInt("Facility");
+			 int Assassination = rs.getInt("Assassination");
+			 int Kidnapping = rs.getInt("Kidnapping");
+		
+			TargetTrend resulttlist = new TargetTrend(event_year, UnarmedAssault, ArmedAssault, Hijacking, HostageTaking, Bombing, Facility, Assassination, Kidnapping);
 			
 			TargetTrendlist.add(resulttlist);
 			}
@@ -63,6 +92,47 @@ public class TargetTrendService {
 		st.close();
 		con.close();
 		return TargetTrendlist;
+		
+		
+	}
+	
+public List<String> getListTarget()throws ClassNotFoundException, SQLException{
+		
+		// for put sql 
+		String sql ="select distinct(Targ_type) from AGASKIN.Target";
+		
+		//for connction with driver
+		Class.forName(driver);
+		Connection con = DriverManager.getConnection(url,uid,pwd);
+		
+		//Make a container to take the result from the sql
+		Statement st = con.createStatement();
+		ResultSet rs = st.executeQuery(sql);
+		
+//		if you want to make more queries copy and paste this with new sqls
+//		Statement st2 = con.createStatement();
+//		ResultSet rs2 = st.executeQuery(new sqls);
+
+
+
+		List<String> TargetList = new ArrayList<String>();
+		
+		//From the above container, put the result into the list and each variable should be same with 
+		//the entity (com.dbms.web.controller.entity.~~)
+		while(rs.next()) {
+			
+			 String event_year = rs.getString("TARG_TYPE");
+			 
+		
+			//TargetTrend resulttlist = new TargetTrend(event_year, UnarmedAssault, ArmedAssault, Hijacking, HostageTaking, Bombing, Facility, Assassination, Kidnapping);
+			
+			TargetList.add(event_year);
+			}
+		
+		rs.close();
+		st.close();
+		con.close();
+		return TargetList;
 		
 		
 	}

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
-import com.dbms.web.controller.entity.WeaponTrend;
+import com.dbms.web.controller.entity.TestEntity;
 import com.dbms.web.controller.service.ListService;
 
 
@@ -26,9 +26,17 @@ public class ListController implements Controller{
 		
 		ModelAndView mv = new ModelAndView("list");
 		// set view page to forward the data and shows the result 
-		List<WeaponTrend> list = listService.getList();
+		List<TestEntity> listOfLists = listService.getList();
+		List<TestEntity> listOfRankLists = listService.getRankList();
+		List<TestEntity> listOfTopLists = listService.getTopList();
+
+//		List<TestEntity> list = listOfLists.get(1);
+//		List<TestEntity> list2 = listOfLists.get(2);
 		// send the model to view page
-		mv.addObject("list", list);
+		mv.addObject("list", listOfLists);
+		mv.addObject("list2", listOfRankLists);
+		mv.addObject("list3", listOfTopLists);
+//		mv.addObject("list2", list2);
 	
 		return mv;
 	}

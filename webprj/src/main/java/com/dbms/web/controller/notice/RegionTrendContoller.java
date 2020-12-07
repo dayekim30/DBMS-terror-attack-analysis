@@ -32,7 +32,7 @@ public class RegionTrendContoller implements Controller {
 		List<RegionTrend> RegionTrend = regionTrendService.getList();
 		
 		// "~~" this name will be used in JSP filt to get the list
-		mv.addObject("anything", RegionTrend);
+		mv.addObject("region", RegionTrend);
 		return mv;
 	}
 }

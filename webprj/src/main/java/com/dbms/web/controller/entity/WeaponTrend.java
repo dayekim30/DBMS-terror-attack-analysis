@@ -13,7 +13,7 @@ public class WeaponTrend {
 	private int Radiological;
 	private int Sabotage_Equipment;
 	private int Vehicle;
-	
+
 	public WeaponTrend() {}
 
 	public WeaponTrend(String event_year, int biological, int chemical, int explosives, int fake_Weapons, int firearms,
@@ -128,9 +128,8 @@ public class WeaponTrend {
 	public void setVehicle(int vehicle) {
 		Vehicle = vehicle;
 	}
-
+	
+	
 	
 
-	
-	
 }
