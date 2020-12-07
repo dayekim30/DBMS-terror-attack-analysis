@@ -27,7 +27,7 @@ public List<Table> getList()throws ClassNotFoundException, SQLException{
 				+ "UNION\r\n"
 				+ "SELECT COUNT(*),'Damage' AS NAME  FROM AGASKIN.Damage\r\n"
 				+ "UNION\r\n"
-				+ "SELECT COUNT(*),'Event' AS NAME  FROM AGASKIN.Event; ";
+				+ "SELECT COUNT(*),'Event' AS NAME  FROM AGASKIN.Event ";
 		
 		//for connction with driver
 		Class.forName(driver);

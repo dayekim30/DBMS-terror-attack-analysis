@@ -7,10 +7,10 @@
 				<!-- One -->
 					<section id="one">
 						<header class="major">
-							<h2>Trends of success rate</h2>
+							<h2>Data Base Information</h2>
 <!-- 							there is critical information.</h2> -->
 						</header>
-						<p>QUERY 10. Attack, Location, Event: successful attack rate, user select gang, display a line graph in which each line is a region?</p>
+						
 						<ul class="actions">
 						</ul>
 					</section>
@@ -33,7 +33,7 @@
 
 				<!-- Three -->
 					<section id="three">
-						<h2>Visualization</h2>
+						<h2></h2>
 						<div class="row">
 						
 					 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -43,7 +43,7 @@
 
 					      var year=[];
 					      var sizeq=[];
-					      var count =0;
+					      var count=0;
 							
 					      function drawTable() 
 					      {
@@ -63,14 +63,14 @@
 
 					        var table = new google.visualization.Table(document.getElementById('table_div'));
 
-					        table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+					        table.draw(data, {width: '50%', height: '100%'});
 					      }
 					    </script>
 					     <c:forEach items="${table}" var="n">
 			  				<script type="text/javascript" >
 				    		/*<![CDATA[*/
 				      		
-				      		year[count] = ${n.tablename};
+				      		year[count] = "${n.tablename}";
 				      		sizeq[count] = ${n.size};
 				      		
 				      		count++;
