@@ -1,4 +1,5 @@
 package com.dbms.web.controller.notice;
+import java.util.ArrayList;
 //QUERY 4
 import java.util.List;
 
@@ -29,13 +30,19 @@ public class TargetTrendController implements Controller {
 		// TODO Auto-generated method stub
 		//which jsp file you want to send this data
 		ModelAndView mv = new ModelAndView("targettrend");
-		
-		List<TargetTrend> TargetTrend = targetTrendService.getList();
+		String a=request.getParameter("target");
+		if (a==null) {
+			a="Military";
+		}
+		List<TargetTrend> TargetTrend = targetTrendService.getList(a);
 		List<String> targetlist = targetTrendService.getListTarget();
-		
+		List<String> target=new ArrayList<String>();
+		target.add(a);
 		// "~~" this name will be used in JSP filt to get the list
 		mv.addObject("TargetTrendList", TargetTrend);
 		mv.addObject("TargetList", targetlist);
+		mv.addObject("Target", target);
+		
 		return mv;
 	}
 }

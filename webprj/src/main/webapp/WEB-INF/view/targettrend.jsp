@@ -15,6 +15,7 @@
 						</ul>
 					</section>
 					<select id="arr"></select>
+					<div id="sbut"></div>
                     <script> 
 				        //var up = document.getElementById('geeks'); 
 				        //var down = document.getElementById('gfg'); 
@@ -22,10 +23,26 @@
 				        select.onchange = function(){var e = document.getElementById("arr");
 			            var value = e.options[e.selectedIndex].value;
 			            var text = e.options[e.selectedIndex].text;
-			            alert(text)
+			           // alert(text)
 			            var form = document.createElement("form"); 
 			            form.setAttribute("method", "post"); 
-			            form.setAttribute("action", "/targettrend"); };
+			            form.setAttribute("action", "/targettrend");
+			            var s = document.createElement("input"); 
+		                s.setAttribute("type", "submit"); 
+		                s.setAttribute("value", "Submit"); 
+		                var DOB = document.createElement("input"); 
+		                DOB.setAttribute("type", "text"); 
+		                DOB.setAttribute("name", "target"); 
+		                DOB.setAttribute("placeholder", "target"); 
+		                DOB.value=text;
+		                //form.appendChild(s); 
+		                form.appendChild(DOB);
+		               
+		                document.getElementById("sbut") 
+		                .appendChild(form); 
+		                form.submit();
+		                
+		                 };
 				        var arrT = []; 
 				        var count1=0
 				        //up.innerHTML = "Click on the button to " 
@@ -62,7 +79,7 @@
 					    <script type="text/javascript">
 					      google.charts.load('current', {'packages':['corechart']});
 					      google.charts.setOnLoadCallback(drawChart);
-
+                          var targ;
 					      var year = new Array();
 					      var UnarmedAssault= new Array();
 					      var ArmedAssault= new Array();
@@ -81,7 +98,8 @@
 					                el.value = arrT; 
 					                select.appendChild(el); 
 					            } 
-
+					            document.getElementById('t_type').value=targ;
+					            document.getElementById('t_type').innerHTML=targ;
 					            
 					        }
 					      function drawChart() {
@@ -141,8 +159,19 @@
 				    		/*]]>*/
 		  						</script>
 						 </c:forEach>
+						 
+						 <c:forEach items="${Target}" var="n">
+			  				<script type="text/javascript" >
+				    		/*<![CDATA[*/
+				      		
+				      		targ = "${n}";
+				      			
+				      		//Console.log(year[count]);
+				    		/*]]>*/
+		  						</script>
+						 </c:forEach>
 					    
-					     
+					    <div id="t_type"></div>
 					    <div id="curve_chart" style="width: 2000px; height: 500px"></div>
 						</div>
 					</section>

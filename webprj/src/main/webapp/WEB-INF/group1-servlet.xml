@@ -37,6 +37,10 @@
    		<property name="successRateService" ref="successRateService" />
     </bean>
     
+    <bean id="/tuples" class="com.dbms.web.controller.notice.TupleController" >
+   		<property name="tuples" ref="tuples" />
+    </bean>
+    
      <!-- tiles mapping  -->
     <bean
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
@@ -49,6 +53,8 @@
 		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions" value="/WEB-INF/tiles.xml" />
 	</bean>
+	
+	
 
         <!-- collaborators and configuration for this bean go here -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -67,6 +73,7 @@
 	 <bean id ="weapondamageLocationTrendService" class="com.dbms.web.controller.service.WeapondamageLocationTrendService" />
 	 <bean id ="terroristTrendService" class="com.dbms.web.controller.service.TerroristTrendService" />
 	 <bean id ="regionTrendService" class="com.dbms.web.controller.service.RegionTrendService" />
-	  <bean id ="successRateService" class="com.dbms.web.controller.service.SuccessRateService" />
+	 <bean id ="successRateService" class="com.dbms.web.controller.service.SuccessRateService" />
+	  <bean id ="tuples" class="com.dbms.web.controller.service.Tuples" />
 	 
 </beans>

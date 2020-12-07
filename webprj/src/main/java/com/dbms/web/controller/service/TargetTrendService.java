@@ -1,6 +1,7 @@
 package com.dbms.web.controller.service;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,7 +16,7 @@ public class TargetTrendService {
 	private String pwd="qwert1234";
 	private String driver = "oracle.jdbc.driver.OracleDriver";
 	
-	public List<TargetTrend> getList()throws ClassNotFoundException, SQLException{
+	public List<TargetTrend> getList(String target)throws ClassNotFoundException, SQLException{
 		
 		// for put sql 
 		String sql ="WITH tamp AS\n"
@@ -28,7 +29,7 @@ public class TargetTrendService {
 				+ "        SELECT attack_type, event_id FROM AGASKIN.Attack\n"
 				+ "        WHERE attack_type <> 'Unknown')\n"
 				+ "    WHERE event_year BETWEEN 1985 AND 2003   -- input\n"
-				+ "    AND targ_type = 'Abortion Related'       -- input\n"
+				+ "    AND targ_type = ?       -- input\n"
 				+ "    GROUP BY targ_type, attack_type, event_year\n"
 				+ ")\n"
 				+ "SELECT a.event_year, NVL(b.num,0)UnarmedAssault, NVL(c.num,0)Hijacking, NVL(d.num,0)HostageTaking,\n"
@@ -58,8 +59,10 @@ public class TargetTrendService {
 		Connection con = DriverManager.getConnection(url,uid,pwd);
 		
 		//Make a container to take the result from the sql
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(sql);
+		//Statement st = con.createStatement();
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, target);
+		ResultSet rs = statement.executeQuery();
 		
 //		if you want to make more queries copy and paste this with new sqls
 //		Statement st2 = con.createStatement();
@@ -89,7 +92,8 @@ public class TargetTrendService {
 			}
 		
 		rs.close();
-		st.close();
+		//st.close();
+		statement.close();
 		con.close();
 		return TargetTrendlist;
 		
