@@ -7,10 +7,11 @@
 				<!-- One -->
 					<section id="one">
 						<header class="major">
-							<h2>Trends of top10 terrorist groups attack type<br />
+							<h2>Top 10 Terrorist Group Trends<br></h2>
 <!-- 							there is critical information.</h2> -->
 						</header>
-						<p>QUERY 8. Attack, Event: is there a trend b/t the TOP10 terrorist groups and their types of attacks?</p>
+						<p>For a given time period, this trend shows the top 10 most active terrorist groups
+	and their relationship with the types of attacks the group uses.</p>
 						<ul class="actions">
 							</ul>
 					</section>
@@ -33,14 +34,38 @@
 
 				<!-- Three -->
 					<section id="three">
-						<h2>Visualization</h2>
 						<div class="row">
 						
 					 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 					    <script type="text/javascript">
 					      google.charts.load('current', {'packages':['corechart']});
 					      google.charts.setOnLoadCallback(drawChart);
+					      google.charts.load('current', {'packages':['bar']});
+					      google.charts.load('current', {'packages':['table']});
+					      google.charts.setOnLoadCallback(drawTable);
 
+					      function drawTable() 
+					      {
+					        var data = new google.visualization.DataTable();
+					        data.addColumn('string', 'Month');
+					        data.addColumn('string', 'Max gang');
+					        data.addColumn('string', 'Min gang');
+
+
+					        var i = 0;
+					        for(i = 0; i < count3; i++)
+					        {
+					          data.addRows([
+					            [month[i], gang_max[i],gang_min[i]]
+					            ]);
+					        }
+
+
+					        var table = new google.visualization.Table(document.getElementById('table_div'));
+
+					        table.draw(data, {width: '100%', height: '100%'});
+					      }
+					      
 					      var year = new Array();
 					      var UnarmedAssault= new Array();
 					      var ArmedAssault= new Array();
@@ -51,32 +76,121 @@
 					      var Assassination= new Array();
 					      var Kidnapping= new Array();
 					      var count =0;
-							
+
+					      var year2 = new Array();
+					      var UnarmedAssault2= new Array();
+					      var ArmedAssault2= new Array();
+					      var Hijacking2= new Array();
+					      var HostageTaking2= new Array();
+					      var Bombing2= new Array();
+					      var Facility2= new Array();
+					      var Assassination2= new Array();
+					      var Kidnapping2= new Array();
+					      var count2 =0;
+
+					       var month=[];
+				      		//month[count3] = year2[count2].toString();
+				      		var gang_max=[];
+				      		var max=[];
+				      		var gang_min=[];
+				      		var min=[];	
+				      		var count3=0;
 					      function drawChart() {
 							var i;
+							var i2;
+							var i3;
 							var arr=[];
-						
-							arr.push(['year','UnarmedAssault','ArmedAssault','Hijacking','HostageTaking','Bombing','Facility','Assassination','Kidnapping']);
+							var arr2=[];
+						    var arr3=[];
+						    var arr4=[];
+							arr.push(['year','UnarmedAssault','ArmedAssault','Hijacking','HostageTaking','Bombing','Facility',
+								'Assassination','Kidnapping']);
 							
-
+							arr2.push(['year','UnarmedAssault','ArmedAssault','Hijacking','HostageTaking','Bombing','Facility',
+								'Assassination','Kidnapping']);
+							arr3.push(['Month','Maximum']);
+							arr4.push(['Month','Minimum']);
 							for (i=0;i<count;i++){
-								arr.push([year[i], UnarmedAssault[i],ArmedAssault[i],Hijacking[i],HostageTaking[i],Bombing[i],Facility[i],Assassination[i],Kidnapping[i]]);			
+								arr.push([year[i], UnarmedAssault[i],ArmedAssault[i],Hijacking[i],HostageTaking[i],Bombing[i],
+									Facility[i],Assassination[i],Kidnapping[i]]);			
 								}
-
+							
+							for (i2=0;i2<count2;i2++){
+								arr2.push([year2[i2], UnarmedAssault2[i2],ArmedAssault2[i2],Hijacking2[i2],HostageTaking2[i2],Bombing2[i2],
+									Facility2[i2],Assassination2[i2],Kidnapping2[i2]]);			
+								}
+							for (i3=0;i3<count3;i3++){
+								arr3.push([month[i3],max[i3]]);	
+								arr4.push([month[i3],min[i3]]);		
+								}
 						      
 					        var data = google.visualization.arrayToDataTable(arr);
-					
+					        var data2 = google.visualization.arrayToDataTable(arr2);
+					        
 					        var options = {
-					          title: 'TOP10 Terrorist Groups Attack Type',
+					          title: 'TOP10 Terrorist Groups Attack Type Trend Based on Year',
 					          curveType: 'function',
 					          legend: { position: 'bottom' }
 					        };
-					
+
+					        var options2 = {
+							          title: 'TOP10 Terrorist Groups Attack Type Trend Based on Month',
+							          curveType: 'function',
+							          legend: { position: 'bottom' }
+							        };
+							
 					        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-					
+					        var chart2 = new google.visualization.LineChart(document.getElementById('curve_chart2'));
+					        var topdata = new google.visualization.arrayToDataTable(arr3);
+					        var topdata2 = new google.visualization.arrayToDataTable(arr4);
+
+					          var options3 = {
+					            width: 800,
+					            chart: {
+					              title: 'Maximum number of attacks by any individual group Month-Wise ',
+					              subtitle: 'Name of Gang is in the Table'
+					            },
+					            bars: 'horizontal', // Required for Material Bar Charts.
+					            series: {
+					              0: { axis: 'Maximum' } // Bind series 0 to an axis named 'distance'.
+					              }, // Bind series 1 to an axis named 'brightness'.
+					            
+					            axes: {
+					              x: {
+					                distance: {label: 'Attacks'}, // Bottom x-axis.
+					                brightness: {side: 'top', label: 'apparent magnitude'} // Top x-axis.
+					              }
+					            }
+					          };
+					          var options4 = {
+							            width: 800,
+							            chart: {
+							              title: 'Minimum number of attacks by any individual group Month-Wise',
+							              subtitle: 'Name of Gang is in the Table'
+							            },
+							            bars: 'horizontal', // Required for Material Bar Charts.
+							            series: {
+							              0: { axis: 'Minimum',color:'red' } // Bind series 0 to an axis named 'distance'.
+							              }, // Bind series 1 to an axis named 'brightness'.
+							            
+							            axes: {
+							              x: {
+							                distance: {label: 'Attacks'}, // Bottom x-axis.
+							                brightness: {side: 'top', label: 'apparent magnitude'} // Top x-axis.
+							              }
+							            }
+							          };
+
+					        var chart3 = new google.charts.Bar(document.getElementById('dual_x_div'));
+					        var chart4 = new google.charts.Bar(document.getElementById('dual_x_div2'));
+					        
+					        chart3.draw(topdata, options3);
+					        chart4.draw(topdata2,options4);
 					        chart.draw(data, options);
+					        chart2.draw(data2, options2);
 					      }
 					    </script>
+					    
 					     <c:forEach items="${TerroristTrendList}" var="n">
 			  				<script type="text/javascript" >
 				    		/*<![CDATA[*/
@@ -96,10 +210,52 @@
 				    		/*]]>*/
 		  						</script>
 						 </c:forEach>
+						 
+						 <c:forEach items="${TerroristTrendList2}" var="n">
+			  				<script type="text/javascript" >
+				    		/*<![CDATA[*/
+				      		
+				      		year2[count2] = ${n.getEvent_year()};
+				      		year2[count2] = year2[count2].toString();
+				      		UnarmedAssault2[count2] = ${n.getUnarmedAssault()};
+				      		ArmedAssault2[count2]= ${n.getArmedAssault()};
+				      		Hijacking2[count2]=${n.getHijacking()};
+				      		HostageTaking2[count2]=${n.getHostageTaking()};
+				      		Bombing2[count2]=${n.getBombing()};
+				      		Facility2[count2]= ${n.getFacility()};
+				      		Assassination2[count2]= ${n.getAssassination()};
+				      		Kidnapping2[count2]= ${n.getKidnapping()};
+				      		count2++;
+				      		//Console.log(year[count]);
+				    		/*]]>*/
+		  						</script>
+						 </c:forEach>
+						 <c:forEach items="${Top10Terrorist}" var="n">
+			  				<script type="text/javascript" >
+				    		/*<![CDATA[*/
+				      		
+				      		month[count3] = "${n.getMonth()}";
+				      		//month[count3] = year2[count2].toString();
+				      		gang_max[count3] = "${n.getGang_max()}";
+				      		max[count3]= ${n.getMax()};
+				      		gang_min[count3]="${n.getGang_min()}";
+				      		min[count3]=${n.getMin()};
+				      		
+				      		count3++;
+				      		//Console.log(year[count]);
+				    		/*]]>*/
+		  						</script>
+						 </c:forEach>
+						 <section> <div id="dual_x_div" style="width: 400px; height: 500px"></div></section>
 					    
+					    <div id="dual_x_div2" style="width: 1000px; height: 500px;margin-top: 2.5em"></div>
+					     <div style="margin-left: 2.5em;margin-top: 2.5em" id="table_div" style="width: 1000px; height: 500px"></div>
 					    
 					    <div id="curve_chart" style="width: 1000px; height: 500px"></div>
+						
+						<div id="curve_chart2" style="width: 1000px; height: 500px"></div>
 						</div>
+						
 					</section>
 
 			

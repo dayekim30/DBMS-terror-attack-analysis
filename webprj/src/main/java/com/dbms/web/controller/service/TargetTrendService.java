@@ -18,7 +18,7 @@ public class TargetTrendService {
 	
 	public List<TargetTrend> getList(String target)throws ClassNotFoundException, SQLException{
 		
-		// for put sql 
+		// for put 
 		String sql ="WITH tamp AS\n"
 				+ "(\n"
 				+ "    SELECT targ_type, attack_type, event_year, COUNT(event_id) AS num FROM AGASKIN.Event\n"
@@ -28,7 +28,7 @@ public class TargetTrendService {
 				+ "    NATURAL JOIN (\n"
 				+ "        SELECT attack_type, event_id FROM AGASKIN.Attack\n"
 				+ "        WHERE attack_type <> 'Unknown')\n"
-				+ "    WHERE event_year BETWEEN 1985 AND 2003   -- input\n"
+				+ "    WHERE event_year BETWEEN 1970 AND 2017   -- input\n"
 				+ "    AND targ_type = ?       -- input\n"
 				+ "    GROUP BY targ_type, attack_type, event_year\n"
 				+ ")\n"

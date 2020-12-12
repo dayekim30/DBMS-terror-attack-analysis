@@ -24,8 +24,7 @@ public List<SuccessRate> getList()throws ClassNotFoundException, SQLException{
 				+ "        SELECT region_name, event_year, COUNT(Was_success) as success FROM AGASKIN.Attack \n"
 				+ "        NATURAL JOIN AGASKIN.Event\n"
 				+ "        NATURAL JOIN AGASKIN.Location\n"
-				+ "        WHERE gang_name = 'Taliban'     -- input begin\n"
-				+ "        AND event_year BETWEEN 1990 AND 2020    -- input end\n"
+				+ "        WHERE event_year BETWEEN 1990 AND 2020    -- input end\n"
 				+ "        AND Was_success = 1\n"
 				+ "        GROUP BY region_name, event_year\n"
 				+ "    ) a1\n"
@@ -34,8 +33,7 @@ public List<SuccessRate> getList()throws ClassNotFoundException, SQLException{
 				+ "        SELECT region_name, event_year, COUNT(Was_success) as failed FROM AGASKIN.Attack \n"
 				+ "        NATURAL JOIN AGASKIN.Event\n"
 				+ "        NATURAL JOIN AGASKIN.Location\n"
-				+ "        WHERE gang_name = 'Taliban'     -- input begin\n"
-				+ "        AND event_year BETWEEN 1990 AND 2020    -- input end\n"
+				+ "         WHERE event_year BETWEEN 1990 AND 2020    -- input end\n"
 				+ "        AND Was_success = 0\n"
 				+ "        GROUP BY region_name, event_year\n"
 				+ "    ) a2\n"
@@ -69,8 +67,8 @@ public List<SuccessRate> getList()throws ClassNotFoundException, SQLException{
 				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE region_name='Sub-Saharan Africa')l\n"
 				+ "ON a.event_year = l.event_year\n"
 				+ "LEFT OUTER JOIN (SELECT * FROM tamp WHERE region_name='North America')m\n"
-				+ "ON a.event_year = m.event_year\n"
-				+ "ORDER BY a.event_year";
+				+ "ON a.event_year = m.event_year \n"
+				+ "ORDER BY EVENT_YEAR";
 		
 		//for connction with driver
 		Class.forName(driver);

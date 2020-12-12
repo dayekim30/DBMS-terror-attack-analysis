@@ -7,35 +7,15 @@
 				<!-- One -->
 					<section id="one">
 						<header class="major">
-							<h2>Trends of Weapon type<br />
-<!-- 							there is critical information.</h2> -->
+							<h2> Weapon Trends<br> </h2>
 						</header>
-						<p>QUERY 2. Weapon, Event: Is there a trend between the most common weapons used over the years?</p>
+						<p>This trend shows the frequency of the different types of weapons used over
+	the years.</p>
 						<ul class="actions">
-							<li><a href="#" class="button">Learn More</a></li>
 						</ul>
 					</section>
 
-				<!-- Two -->
-<!-- 					<section id="two"> -->
-<!-- 						<h2>Recent Work</h2> -->
-<!-- 						<table> -->
-<%-- 							<c:forEach var="n" items = "${list}"> --%>
-<!-- 							<tr> -->
-<%-- 								<td>${n.getWep_type()}</td> --%>
-<%-- 								<td>${n.getEvent_year()}</td> --%>
-<%-- 								<td>${n.getNum()}</td> --%>
-<!-- 							</tr> -->
-<%-- 							</c:forEach> --%>
-<!-- 						</table>	 -->
-												
-<!-- 					</section> -->
-							
-
-				<!-- Three -->
 					<section id="three">
-						<h2>Get In Touch</h2>
-						<p>Accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque lorem ipsum dolor.</p>
 						<div class="row">
 						
 					 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -56,14 +36,31 @@
 					      var Sabotage_Equipment=new Array();
 					      var Vehicle= new Array();
 					      var count =0;
+
+					      var year2 = new Array();
+					      var Biological2= new Array();
+					      var Chemical2= new Array();
+					      var Explosives2= new Array();
+					      var Fake_Weapons2= new Array();
+					      var Firearms2= new Array();
+					      var Incendiary2= new Array();
+					      var Meleev2= new Array();
+					      var Other2= new Array();
+					      var Radiological2= new Array();
+					      var Sabotage_Equipment2=new Array();
+					      var Vehicle2= new Array();
+					      var count2 =0;
 							
 					      function drawChart() {
 							var i;
+							var i2;
 							var arr=[];
+							var arr2=[];
 						
 							arr.push(['year','Biological','Chemical','Explosives','Fake_Weapons','Firearms','Incendiary','Meleev','Other',
 								'Radiological','Sabotage_Equipment','Vehicle']);
-							
+							arr2.push(['year','Biological','Chemical','Explosives','Fake_Weapons','Firearms','Incendiary','Meleev','Other',
+								'Radiological','Sabotage_Equipment','Vehicle']);
 
 							for (i=0;i<count;i++){
 								arr.push([year[i], Biological[i],Chemical[i],Explosives[i],Fake_Weapons[i],Firearms[i],Incendiary[i]
@@ -71,20 +68,35 @@
 								
 								}
 
+							for (i2=0;i2<count2;i2++){
+								arr2.push([year2[i2], Biological2[i2],Chemical2[i2],Explosives2[i2],Fake_Weapons2[i2],Firearms2[i2],
+									Incendiary2[i2],Meleev2[i2],Other2[i2],Radiological2[i2],Sabotage_Equipment2[i2],Vehicle2[i2]]);			
+								}
+
 						      
 					        var data = google.visualization.arrayToDataTable(arr);
+					        var data2 = google.visualization.arrayToDataTable(arr2);
 					
 					        var options = {
-					          title: 'WEAPON TYPE TRAND',
+					          title: 'Weapon Type Trend',
 					          curveType: 'function',
 					          legend: { position: 'bottom' }
 					        };
+
+					        var options2 = {
+							          title: 'Weapon Type Trend »2000',
+							          curveType: 'function',
+							          legend: { position: 'bottom' }
+							        };
 					
 					        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+					        var chart2 = new google.visualization.LineChart(document.getElementById('curve_chart2'));
 					
 					        chart.draw(data, options);
+					        //chart2.draw(data2, options2);
 					      }
 					    </script>
+					    
 					     <c:forEach items="${wplist}" var="n">
 			  				<script type="text/javascript" >
 				    		/*<![CDATA[*/
@@ -107,9 +119,32 @@
 				    		/*]]>*/
 		  						</script>
 						 </c:forEach>
-					    
+						 
+						 <c:forEach items="${wplist2}" var="n">
+			  				<script type="text/javascript" >
+				    		/*<![CDATA[*/
+				      		
+				      		year2[count2] = ${n.getEvent_year()};
+				      		year2[count2] = year2[count2].toString();
+				      		Biological2[count2] = ${n.getBiological()};
+				      		Chemical2[count2]= ${n.getChemical()};
+						    Explosives2[count2]=${n.getExplosives()};
+						    Fake_Weapons2[count2]=${n.getFake_Weapons()};
+						    Firearms2[count2]=${n.getFirearms()};
+						    Incendiary2[count2]= ${n.getIncendiary()};
+						    Meleev2[count2]= ${n.getMelee()};
+						    Other2[count2]= ${n.getOther()};
+						    Radiological2[count2]= ${n.getRadiological()};
+						    Sabotage_Equipment2[count2]=${n.getSabotage_Equipment()};
+						    Vehicle2[count2]=${n.getVehicle()};
+				      		count2++;
+				      		//Console.log(year[count]);
+				    		/*]]>*/
+		  						</script>
+						 </c:forEach>
 					    
 					    <div id="curve_chart" style="width: 1000px; height: 500px"></div>
+						<div id="curve_chart2" style="width: 1000px; height: 500px"></div>
 						</div>
 					</section>
 

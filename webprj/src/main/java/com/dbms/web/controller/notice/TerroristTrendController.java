@@ -10,6 +10,7 @@ import org.springframework.web.servlet.mvc.Controller;
 
 
 import com.dbms.web.controller.entity.TerroristTrend;
+import com.dbms.web.controller.entity.Top10Terrorist;
 import com.dbms.web.controller.service.TerroristTrendService;
 
 public class TerroristTrendController implements Controller  {
@@ -27,11 +28,14 @@ public class TerroristTrendController implements Controller  {
 			// TODO Auto-generated method stub
 			//which jsp file you want to send this data
 			ModelAndView mv = new ModelAndView("terroristtrend");
-			
 			List<TerroristTrend> TerroristTrend = terroristTrendService.getList();
+			List<TerroristTrend> TerroristTrend2 = terroristTrendService.getList2();
+			List<Top10Terrorist> Top10Terrorist = terroristTrendService.getTopList();
+
 			
-			// "~~" this name will be used in JSP filt to get the list
 			mv.addObject("TerroristTrendList", TerroristTrend);
+			mv.addObject("TerroristTrendList2", TerroristTrend2);
+			mv.addObject("Top10Terrorist", Top10Terrorist);
 			return mv;
 		}
 }

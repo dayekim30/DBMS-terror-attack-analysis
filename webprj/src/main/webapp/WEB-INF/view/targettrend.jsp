@@ -7,10 +7,11 @@
 				<!-- One -->
 					<section id="two">
 						<header class="major">
-							<h2>Trends of target and attack type</h2><br />
+							<h2>Terrorist Target Type and Attack Type Trends</h2><br />
 <!-- 							there is critical information.</h2> -->
 						</header>
-						<p>QUERY 4. Target, Attack, Event: Is there a trend between terrorist target type and the attack_types for this target?</p>
+						<p>This trend shows the relationship between a specific target type and the frequency 
+	of the different types of attacks against this target.</p>
 						<ul class="actions">
 						</ul>
 					</section>
@@ -73,7 +74,6 @@
 
 				<!-- Three -->
 					<section id="three">
-						<h2>Visualization</h2>
 						<div class="row">
 					 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 					    <script type="text/javascript">
@@ -99,7 +99,7 @@
 					                select.appendChild(el); 
 					            } 
 					            document.getElementById('t_type').value=targ;
-					            document.getElementById('t_type').innerHTML=targ;
+					            document.getElementById('t_type').innerHTML="Target type: "+targ;
 					            
 					        }
 					      function drawChart() {
@@ -118,7 +118,7 @@
 					        var data = google.visualization.arrayToDataTable(arr);
 					
 					        var options = {
-					          title: 'Target and Attack Type TRAND',
+					          title: 'Target and Attack Type Trend',
 					          curveType: 'function',
 					          legend: { position: 'bottom' }
 					        };
@@ -172,7 +172,7 @@
 						 </c:forEach>
 					    
 					    <div id="t_type"></div>
-					    <div id="curve_chart" style="width: 2000px; height: 500px"></div>
+					    <div id="curve_chart" style="width: 1000px; height: 500px"></div>
 						</div>
 					</section>
 

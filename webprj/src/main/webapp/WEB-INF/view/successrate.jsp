@@ -7,10 +7,11 @@
 				<!-- One -->
 					<section id="one">
 						<header class="major">
-							<h2>Trends of success rate</h2>
+							<h2>Regional Terrorist Attack Success Rate Trends</h2>
 <!-- 							there is critical information.</h2> -->
 						</header>
-						<p>QUERY 10. Attack, Location, Event: successful attack rate, user select gang, display a line graph in which each line is a region?</p>
+						<p>For a selected area, this trend shows the relationship between the regional
+	and terrorist attack's success rates for their attacks over 40 years.</p>
 						<ul class="actions">
 						</ul>
 					</section>
@@ -33,14 +34,36 @@
 
 				<!-- Three -->
 					<section id="three">
-						<h2>Visualization</h2>
 						<div class="row">
-						
+						<label for="areaa">Choose an Area:</label>
+
+                       <select name="areas" id="areas">
+						  <option value="CentralAmericaAndCaribbean">CentralAmericaAndCaribbean</option>
+						  <option value="AustralasiaAndOceania">AustralasiaAndOceania</option>
+						  <option value="SouthAmerica">SouthAmerica</option>
+						  <option value="CentralAsia">CentralAsia</option>
+						  <option value="MiddleEastAndNorthAfrica">MiddleEastAndNorthAfrica</option>
+						  <option value="EastAsia">EastAsia</option>
+						  <option value="SouthAsia">SouthAsia</option>
+						  <option value="EasternEurope">EasternEurope</option>
+						  <option value="Southeastasia">Southeastasia</option>
+						  <option value="WesternEurope">WesternEurope</option>
+						  <option value="SubSaharanAfrica">SubSaharanAfrica</option>
+						  <option value="NorthAmerica">NorthAmerica</option>
+						</select>
 					 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 					    <script type="text/javascript">
 					      google.charts.load('current', {'packages':['corechart']});
 					      google.charts.setOnLoadCallback(drawChart);
-
+					      var select = document.getElementById("areas");
+					      var curr="CentralAmericaAndCaribbean";
+					      select.onchange = function(){
+					    	  var e = document.getElementById("areas");
+					    	  var value = e.options[e.selectedIndex].value;
+					          var text = e.options[e.selectedIndex].text;
+					          curr=text;
+					    	  drawChart();
+			                 };
 					      var year = new Array();
 					      var CentralAmericaAndCaribbean= new Array();
 					      var AustralasiaAndOceania= new Array();
@@ -60,14 +83,37 @@
 							var i;
 							var arr=[];
 						
-							arr.push(['year','CentralAmericaAndCaribbean','AustralasiaAndOceania','SouthAmerica','CentralAsia','MiddleEastAndNorthAfrica','EastAsia','SouthAsia','EasternEurope',
-								'Southeastasia','WesternEurope','SubSaharanAfrica','NorthAmerica']);
+							//arr.push(['year','CentralAmericaAndCaribbean','AustralasiaAndOceania','SouthAmerica','CentralAsia','MiddleEastAndNorthAfrica','EastAsia','SouthAsia','EasternEurope',
+								//'Southeastasia','WesternEurope','SubSaharanAfrica','NorthAmerica']);
 							
-
+                            arr.push(['year','SuccessRate'])
 							for (i=0;i<count;i++){
-								arr.push([year[i], CentralAmericaAndCaribbean[i],AustralasiaAndOceania[i],SouthAmerica[i],CentralAsia[i],MiddleEastAndNorthAfrica[i],EastAsia[i]
-								,SouthAsia[i],EasternEurope[i],Southeastasia[i],WesternEurope[i],SubSaharanAfrica[i],NorthAmerica[i]]);			
-								
+								//arr.push([year[i], CentralAmericaAndCaribbean[i],AustralasiaAndOceania[i],SouthAmerica[i],CentralAsia[i],MiddleEastAndNorthAfrica[i],EastAsia[i]
+								//,SouthAsia[i],EasternEurope[i],Southeastasia[i],WesternEurope[i],SubSaharanAfrica[i],NorthAmerica[i]]);	
+								if(curr==="CentralAmericaAndCaribbean")		
+								 {arr.push([year[i],CentralAmericaAndCaribbean[i]]);}
+								if(curr==="AustralasiaAndOceania")		
+								 {arr.push([year[i],AustralasiaAndOceania[i]]);}
+								if(curr==="SouthAmerica")		
+								 {arr.push([year[i],SouthAmerica[i]]);}
+								if(curr==="CentralAsia")		
+								 {arr.push([year[i],CentralAsia[i]]);}
+								if(curr==="MiddleEastAndNorthAfrica")		
+								 {arr.push([year[i],MiddleEastAndNorthAfrica[i]]);}
+								if(curr==="EastAsia")		
+								 {arr.push([year[i],EastAsia[i]]);}
+								if(curr==="SouthAsia")		
+								 {arr.push([year[i],SouthAsia[i]]);}
+								if(curr==="EasternEurope")		
+								 {arr.push([year[i],EasternEurope[i]]);}
+								if(curr==="Southeastasia")		
+								 {arr.push([year[i],Southeastasia[i]]);}
+								if(curr==="WesternEurope")		
+								 {arr.push([year[i],WesternEurope[i]]);}
+								if(curr==="SubSaharanAfrica")		
+								 {arr.push([year[i],SubSaharanAfrica[i]]);}
+								if(curr==="NorthAmerica")		
+								 {arr.push([year[i],NorthAmerica[i]]);}
 								}
 
 						      
@@ -109,7 +155,7 @@
 						 </c:forEach>
 					    
 					    
-					    <div id="curve_chart" style="width: 2000px; height: 500px"></div>
+					    <div id="curve_chart" style="width: 1000px; height: 500px"></div>
 						</div>
 					</section>
 

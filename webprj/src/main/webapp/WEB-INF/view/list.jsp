@@ -7,12 +7,13 @@
 				<!-- One -->
 					<section id="one">
 						<header class="major">
-							<h2>Correlation between property damage, fatality<br />
-  							and frequency of terror attack of countries (21s)</h2>
+							<h2>Regional Property Damage and Casualty Trends</h2>
 						</header>
-						<p>QUERY 11. lets see how it works?</p>
+						<p>
+	This graph shows the relationship between the frequency of attacks, the casualties 
+	in these attacks, and the total amount of property damage done for different 
+	countries.</p>
 						<ul class="actions">
-							<li><a href="#" class="button">Learn More</a></li>
 						</ul>
 					</section>
 
@@ -34,9 +35,8 @@
 
 				<!-- Three -->
 					<section id="three">
-						<h2>Get In Touch</h2>
-						<p>Aaron: what shoud we wirte here?
-					</p>
+						
+						
 						<div class="row">
 						
 					 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -74,10 +74,10 @@
 							var arr=[];
 							var arr2=[];
 							var arr3=[];
-							arr.push(['country_code','frequency','fatality','country_name','property_damage']);
+							arr.push(['country_code','frequency','casualty','country_name','property_damage']);
 							
-							arr2.push(['country_code','frequency','fatality','country_name','property_damage']);
-							arr3.push(['country_code','frequency','fatality','country_name','property_damage']);
+							arr2.push(['country_code','frequency','casualty','country_name','property_damage']);
+							arr3.push(['country_code','frequency','casualty','country_name','property_damage']);
 							for (i=0;i<count;i++){
 								arr.push([country_code[i], frequency[i], fatality[i], country_name[i], property_damage[i]]);			
 								}
@@ -92,31 +92,31 @@
 					        var data2 = google.visualization.arrayToDataTable(arr2);
 					        var data3 = google.visualization.arrayToDataTable(arr3);
 					        var options = {
-					                title: 'X axis: The Number of Terror Attack  Y axis: The Number of Victims Raidus of Bubbld: The size of bubble : The Amount of Property Damage',
-					                hAxis: {title: 'frequency',
+					                title: 'Size of Bubble: Total amount of Property damage done',
+					                hAxis: {title: 'Number of terrorist attacks (Frequency)',
 					                		viewWindow: {max:5000}
 	                						},
-					                vAxis: {title: 'fatality',
+					                vAxis: {title: 'Number of Victims (Casualties)',
 					                	    viewWindow:{max:20000}
 						                	   },
 					                bubble: {textStyle: {fontSize: 11}}
 					              };
 					        var options2 = {
-					                title: 'X axis: The Number of Terror Attack  Y axis: The Number of Victims Raidus of Bubbld: The size of bubble : The Amount of Property Damage',
-					                hAxis: {title: 'frequency',
+					                title: 'Size of Bubble: Total amount of Property damage done',
+					                hAxis: {title: 'Number of terrorist attacks (Frequency)',
 					                		viewWindow: {max:50}
 	                						},
-					                vAxis: {title: 'fatality',
+					                vAxis: {title: 'Number of Victims (Casualties)',
 					                	    maxValue:50000,
 					                	    viewWindow:{max:100}},
 					                bubble: {textStyle: {fontSize: 11}}
 					              };
 					        var options3 = {
-					                title: 'X axis: The Number of Terror Attack  Y axis: The Number of Victims Raidus of Bubbld: The size of bubble : The Amount of Property Damage',
-					                hAxis: {title: 'frequency',
+					                title: 'Size of Bubble: Total amount of Property damage done',
+					                hAxis: {title: 'Number of terrorist attacks (Frequency)',
 					                		
 	                						},
-					                vAxis: {title: 'fatality',
+					                vAxis: {title: 'Number of Victims (Casualties)',
 					                	    },
 					                bubble: {textStyle: {fontSize: 11}}
 					              };

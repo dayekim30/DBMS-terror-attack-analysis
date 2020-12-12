@@ -28,7 +28,9 @@ private WeaponService weaponService;
 		ModelAndView mv = new ModelAndView("weapontrend");
 		
 		List<WeaponTrend> wplist = weaponService.getList();
+		List<WeaponTrend> wplist2 = weaponService.getList2();
 		mv.addObject("wplist", wplist);
+		mv.addObject("wplist2", wplist2);
 		return mv;
 	}
 

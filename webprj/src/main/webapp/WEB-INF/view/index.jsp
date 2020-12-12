@@ -6,14 +6,16 @@
 				<!-- One -->
 					<section id="one">
 						<header class="major">
-							<h2>GROUP1 - Terror attack analysis<br />
-							there is critical information.</h2>
+							<h2>GROUP1 - Trends for Terrorist Attacks Over the Last 40 years</h2>
 						</header>
-						<p>Our application is aimed to improve public safety, and provide useful information and tools for public as well as professional institutions to find the attack type, attack geographical distribution, weapon types, powerful terrorist organization trends using the recent 47 years global terrorist attack data.
-Through the analysis of fatality, location, time information of past terror attacks, the user can find different trends using the existing data and see the roughly possibility of a terror attack, and estimate the danger and damage it may cause by the user's own computation and estimation by using our trend data. Therefore, the professional user can take actions to prevent potential terror attacks occurring and the normal user can try to avoid the specific area containing potential risks and then minimize the damage.
-</p>
+						<p>Our project uses a database containing worldwide terrorist attacks over the
+	past 40 years. We analyze trends based on regional location, weapon type used
+	in the attack, what type of attack it was, what was the target of the attack, etc.
+	Our goal is to better prepare for possible future attacks by thoroughly understanding
+	past terrorist groups and attacks so the related groups can better tune their
+	preventive measures based on their situations.</p>
 						<ul class="actions">
-							<li><a href="#" class="button">Learn More</a></li>
+							<li><a href="/tuples" class="button">Count</a></li>
 						</ul>
 					</section>
 
@@ -22,83 +24,44 @@ Through the analysis of fatality, location, time information of past terror atta
 						<h2>Recent Work</h2>
 						<div class="row">
 							<article class="6u 12u$(xsmall) work-item">
-								<a href="/list" ><img src="images/thumbs/01.jpg" alt="" /></a>
-								<h3>list showing</h3>
-								<p>list explanation in detail</p>
+								<a href="/list" ><img src="images/thumbs/1.jpg" width="370" height="217" alt="" /></a>
+								<h3>Regional Property Damage and<br> Casualty Trends</h3>
 							</article>
 							<article class="6u$ 12u$(xsmall) work-item">
-								<a href="/weapontrend" ><img src="images/thumbs/02.jpg" alt="" /></a>
-								<h3>Weapon Trend</h3>
-								<p>The trend of Weapon types over 40 years </p>
+								<a href="/weapontrend" ><img src="images/thumbs/2.jpg" width="370" height="217" alt="" /></a>
+								<h3>Weapon Trends</h3>
 							</article>
 							<article class="6u 12u$(xsmall) work-item">
-								<a href="/targettrend"><img src="images/thumbs/03.jpg" alt="" /></a>
-								<h3>Query4</h3>
-								<p>Target Trend will show here.</p>
+								<a href="/targettrend"><img src="images/thumbs/3.jpg" width="370" height="217" alt="" /></a>
+								<h3>Terrorist Target Type and<br> Attack Type Trends</h3>
 							</article>
+							<!--
 							<article class="6u$ 12u$(xsmall) work-item">
 								<a href="/weapondamagelocationtrend" ><img src="images/thumbs/04.jpg" alt="" /></a>
 								<h3>Query6</h3>
 								<p>Weapon, Location, Damage(FATALITY + WOUNDED): Is there a trend b/t type.</p>
 							</article>
+							-->
 							<article class="6u 12u$(xsmall) work-item">
-								<a href="/terroristtrend" ><img src="images/thumbs/05.jpg" alt="" /></a>
-								<h3>Analysis of Terrorist</h3>
-								<p>top 10 most active terrorist groups.</p>
+								<a href="/terroristtrend" ><img src="images/thumbs/4.jpg" width="370" height="217" alt="" /></a>
+								<h3>Top 10 Terrorist Group Trends</h3>
 							</article>
+							<!--
 							<article class="6u$ 12u$(xsmall) work-item">
 								<a href="/regiontrend"><img src="images/thumbs/06.jpg" alt="" /></a>
 								<h3>Regional Analysis on Terror Attacks</h3>
 								<p>The victims and damages of terror attacks in each country.</p>
 							</article>
+							-->
 							<article class="6u$ 12u$(xsmall) work-item">
-								<a href="/successrate" ><img src="images/thumbs/06.jpg" alt="" /></a>
-								<h3>Trends of Success Rate</h3>
-								<p>Is there a trend b/t a group's success rate and the year?.</p>
+								<a href="/successrate" ><img src="images/thumbs/5.jpg" width="370" height="217" alt="" /></a>
+								<h3>Regional Terrorist Attack<br> Success Rate Trends</h3>
 							</article>
 						</div>
-						<ul class="actions">
-							<li><a href="#" class="button">Full Portfolio</a></li>
-						</ul>
 					</section>
 
 				<!-- Three -->
-					<section id="three">
-						<h2>Get In Touch</h2>
-						<p>Accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque lorem ipsum dolor.</p>
-						<div class="row">
-							<div class="8u 12u$(small)">
-								<form method="post" action="#">
-									<div class="row uniform 50%">
-										<div class="6u 12u$(xsmall)"><input type="text" name="name" id="name" placeholder="Name" /></div>
-										<div class="6u$ 12u$(xsmall)"><input type="email" name="email" id="email" placeholder="Email" /></div>
-										<div class="12u$"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
-									</div>
-								</form>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</div>
-							<div class="4u$ 12u$(small)">
-								<ul class="labeled-icons">
-									<li>
-										<h3 class="icon fa-home"><span class="label">Address</span></h3>
-										1234 Somewhere Rd.<br />
-										Nashville, TN 00000<br />
-										United States
-									</li>
-									<li>
-										<h3 class="icon fa-mobile"><span class="label">Phone</span></h3>
-										000-000-0000
-									</li>
-									<li>
-										<h3 class="icon fa-envelope-o"><span class="label">Email</span></h3>
-										<a href="#">hello@untitled.tld</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</section>
+					
 
 				<!-- Four -->
 				<!--
