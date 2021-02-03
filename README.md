@@ -1,5 +1,5 @@
 # DBMS-terror-attack-analysis
-Web application to visualize the result of analysis from the enormous size of data                                                                                                I 
+Web application to visualize the result of analysis from the enormous size of data
 
 -I implement the web interface and write supporting code to embed the designed SQL queries to retrieve
 data from DBMS.
